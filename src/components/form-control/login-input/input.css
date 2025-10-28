@@ -1,0 +1,47 @@
+.form-input-right-align {
+    display: flex;
+    justify-content: flex-end;
+    /* padding-right:40px; */
+}
+
+.searchIcon-img {
+    position: absolute;
+    right: 21px;
+    width: 18px;
+    top: 14px;
+}
+
+
+
+.Login_relative {
+    position: relative;
+
+}
+
+.Login_absolute {
+    border: 1px solid rgb(171, 169, 169) !important;
+    position: absolute;
+    height: 45px;
+    top: 0px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.Login_absolute_right {
+    position: absolute;
+    top: 6px;
+    right:7px;
+}
+
+.Input_icon {
+    font-size: 22px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    top:2px
+}
+
+.input_css:focus {
+    outline: none !important;
+    border-color: #0046be;
+}

@@ -1,0 +1,179 @@
+.pagination {
+  color: black;
+  padding: 8px 18px;
+  text-decoration: none;
+  border: 1px solid rgba(211, 211, 211, 0.466);
+  list-style-type: none;
+  background-color: white;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.currentPage {
+  color: black;
+  padding: 8px 18px;
+  text-decoration: none;
+  border: 1px solid rgba(211, 211, 211, 0.466);
+  list-style-type: none;
+  display: inline-block;
+  background-color: white;
+  margin-right: 0.5rem;
+}
+
+.totalPage {
+  color: black;
+  padding: 8px 18px;
+  text-decoration: none;
+  list-style-type: none;
+  display: inline-block;
+}
+
+.pagination.active {
+  background-color: #ea4d26;
+  color: white;
+  border: 1px solid #ea4d26;
+}
+
+.pagination:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.pagination:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagination:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pagination span {
+  cursor: pointer;
+  padding-left: 15px;
+}
+
+.rowsPerPageSelect {
+  width: 70px;
+  height: 43px;
+}
+
+/* Bootstrap CSS */
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.disabled {
+  color: black;
+  padding: 8px 18px;
+  text-decoration: none;
+  border: 1px solid rgba(211, 211, 211, 0.466);
+  list-style-type: none;
+  background-color: white;
+  display: inline-block;
+  pointer-events: none;
+  opacity: 0.6;
+}
+.style {
+  width: 65px;
+  height: 40px;
+  position: absolute;
+  right: 16rem;
+  bottom: 0.1rem;
+}
+/* ol, ul {
+    padding-left: 49rem;
+} */
+.style1 {
+  flex-direction: row;
+  position: relative;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+select{
+  border-radius: 4px !important;
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+.pagenation_text {
+  color: #00000099;
+  font-size: 16px;
+  padding-right: 10px;
+  position: relative;
+  top: 7px;
+}
+
+.pages_border {
+  border: 1px solid #00000033;
+  padding: 2px 10px;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
+
+.Records_text {
+  position: relative;
+  top: 3px;
+}
+
+
+
+.previous_arrow,
+.next_arrow {
+  height: 35px;
+  border: 1px solid #00000033;
+  padding: 2px 10px;
+  margin-left: 15px;
+  border-radius: 27px;
+  background-color: #fff;
+  color: #181818dd;
+}
+
+.next_arrow:hover {
+  border: 1px solid #1da9f0;
+  color: #1da9f0;
+}
+
+.previous_arrow:hover {
+  border: 1px solid #1da9f0;
+  color: #1da9f0;
+}
+
+.Floating_corner {
+  float: right;
+}
+
+
+.Pagination_icons {
+  position: relative;
+  top: -1px;
+}
+
+.previous_arrow_disable,
+.next_arrow_disable {
+  height: 35px;
+  border: 1px solid #00000033;
+  padding: 2px 10px;
+  margin-left: 15px;
+  border-radius: 27px;
+  background-color: #f6f6f6;
+  color: grey;
+}

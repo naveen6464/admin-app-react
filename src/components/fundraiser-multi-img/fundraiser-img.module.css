@@ -1,0 +1,136 @@
+.photolabel {
+  padding-bottom: 10px !important;
+  padding-left: 17px !important;
+  font-size: 14px !important;
+}
+.primary_image {
+  position: relative;
+  margin-right: 28px ;
+  height: 150px;
+  /* padding-right: 0.5rem; */
+}
+
+.row {
+    display: flex;
+    margin-left: -15px;
+    margin-right: -15px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+.alignment_images {
+  padding-top: 0px !important;
+  padding-left: 0px !important;
+}
+
+.preview_image_delete-btn {
+  display: unset;
+  color: red;
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.preview_image_delete_btn_none {
+  display: none;
+}
+
+.inner_text {
+  position: absolute;
+  top: 55%;
+  left: 23%;
+  cursor: pointer;
+}
+
+.add_alignment {
+  cursor: pointer;
+  position: relative;
+  top: -20px;
+  left: 1.2em;
+}
+
+.add_alignment1 {
+  cursor: pointer;
+  position: relative;
+  left: 1.5em;
+}
+
+.PreviewImageContainer {
+  position: relative;
+  width: 160px;
+  height: 150px;
+  /* padding-right: 0.5rem; */
+  margin-bottom: 10px;
+  border: 2px dashed #c5d0d8;
+  /* cursor: pointer; */
+  border-radius: 8px;
+  margin-right:25px
+}
+
+
+.multi_image_input {
+    visibility: hidden;
+    display: none;
+  }
+  .multi_image_border {
+    border: dashed 2px #c5d0d8;
+    border-radius: 6px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .text_Colorful {
+    color: #0046be;
+    text-decoration: underline;
+  }
+
+  .multi_image_input {
+    visibility: hidden;
+    display: none;
+  }
+
+  .support_img_preview {
+    height: 150px !important;
+  }
+
+@media (max-width: 1200px) {
+  /* .PreviewImageContainer {
+    margin-bottom: 25px;
+  } */
+}
+
+@media (max-width: 767px) {
+  .step3_support_grid {
+    width: 50%;
+  }
+  /* .PreviewImageContainer {
+    margin-bottom: 25px;
+  } */
+}
+
+@media (max-width: 576px) {
+  .photolabel {
+    padding-left: 10px !important;
+    font-size: 12px !important;
+  }
+
+  .image_upload_fonts {
+    font-size: 13px !important;
+  }
+
+  .image_upload_fonts2 {
+    font-size: 11px !important;
+  }
+
+}
+
+@media (max-width: 400px) {
+  .step3_support_grid {
+    width: 100% !important;
+  }
+
+  /* .PreviewImageContainer {
+    margin-bottom: 25px;
+  } */
+}

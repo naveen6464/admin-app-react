@@ -1,0 +1,65 @@
+.form-input input {
+  display: block;
+  padding: 5px;
+  height: 40px;
+  border-radius: 6px !important;
+  border: 1px solid #cccccc ;
+  outline: none !important;
+  font-size: 14px;
+  width: 100%;
+}
+
+.form-input input:focus {
+  border: 2px solid #2285F9 !important;
+  box-shadow: none !important;
+}
+
+
+select:focus {
+  border: 1px solid #2285F9 !important;
+}
+
+.custom-dropselect:focus {
+  border: 1px solid #2285F9 !important;
+  box-shadow: none !important;
+}
+
+.form-input textarea {
+  display: block;
+  padding: 5px;
+  height: 120px !important;
+  border-radius: 6px !important;
+  border: 1px solid grey ;
+  outline: none !important;
+  font-size: 14px;
+  width: 100%;
+}
+
+.form-input textarea:focus {
+  border: 1px solid #2285F9;
+}
+
+.form-input label {
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.custom-select-label {
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  top: 7px;
+}
+
+.icon-relative{
+  position: relative;
+}
+
+.icon-absolute{
+
+}
+
+.text-class textarea:focus {
+  border: 2px solid #2285F9;
+}

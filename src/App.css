@@ -1,0 +1,241 @@
+.App {
+  text-align: center;
+  font-family: "open sans", sans-serif;
+}
+/* @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext'); */
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.differ canvas {
+  width: 120px !important;
+  height: 120px !important;
+}
+
+.normal canvas {
+  width: 812px !important;
+  height: 450px !important;
+}
+
+.square canvas {
+  width: 350px !important;
+  height: 264px !important;
+}
+
+.banner-img canvas {
+  width: 683px !important;
+  height: 611px !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* .toast-head
+  .Toastify
+  .Toastify__toast-container
+  .Toastify__toast
+  .Toastify__progress-bar {
+  position: absolute;
+  bottom: 8px;
+  width: 95%;
+  height: 4px;
+  z-index: 99999;
+  opacity: 0.7;
+  transform-origin: left;
+  margin-left: 5px;
+  border-radius: 4px !important;
+  animation-duration: 3s !important;
+  opacity: 1;
+}
+
+.toast-head
+  .Toastify
+  .Toastify__toast-container
+  .Toastify__toast
+  .Toastify__toast-body {
+  margin: auto !important;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+}
+
+.toast-head
+  .Toastify
+  .Toastify__toast-container
+  .Toastify__toast
+  .Toastify__close-button
+  svg {
+  fill: currentColor;
+  height: 45px;
+  width: 19px;
+} */
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0px !important;
+}
+
+.ql-toolbar.ql-snow {
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+}
+
+.event-quill .ql-container.ql-snow {
+  height: 120px !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}
+
+input {
+  outline: none !important;
+  border: "1px solid grey";
+}
+
+input :focus {
+  outline: none !important;
+  border: "1px solid #2285F9";
+}
+
+.input_table_search-class {
+  width: 60% !important;
+}
+
+.input_table_search-class::placeholder {
+  font-size: 14px !important;
+}
+
+.active-tab {
+  color: #2285f9;
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 2px solid #2285f9;
+}
+.inactive-tab {
+  color: #545454;
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition-duration: 1s;
+}
+
+.under-line {
+  text-decoration: underline;
+}
+
+.breadCrumb-text a {
+  text-decoration: none !important;
+  color: #000;
+}
+
+.react-datepicker-popper {
+  z-index: 10 !important;
+}
+
+.ql-snow .ql-transparent {
+  opacity: 1 !important;
+  content: "A" !important;
+}
+
+.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke,
+.ql-snow.ql-toolbar .ql-picker-item:hover {
+  stroke: none;
+  content: "A";
+}
+
+.pending-spin {
+  display: inline;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  color: #edf2f7;
+  animation: spin 1s linear infinite;
+  color: #adb1b6;
+  fill: #ff782c;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.text-normal {
+  text-transform: lowercase !important;
+}
+
+.one-line-shrink {
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1; /* Limits text to one line */
+  height: 1.4rem; /* Adjust based on your font-size and line-height */
+  max-height: 1.4rem; /* Ensure height matches the line height */
+  width: 100px; /* Adjust the width to see the ellipsis */
+  white-space: normal; /* Allows breaking lines for clamping */
+}
+
+.expanded-table {
+  height: 75vh !important;
+}
+
+.transaction-Id-input::placeholder {
+  text-transform: none;
+}
+
+.input_css_status {
+  border: 1px solid #c5d0d8;
+  margin-bottom: 23px;
+  margin-top: 1px;
+  padding-left: 10px;
+  position: relative;
+  width: 250px !important;
+  height: 45px;
+  border-radius: 8px !important;
+  background-color: white;
+  color: rgba(15, 22, 28, 0.7);
+  font-size: 16px;
+}
+
+.input_search-contact{ 
+  width: 100% !important
+}
+
+.contact_filter {
+  margin-bottom: 0px !important;
+  height: 39.6px !important;
+}
+
+.fundraiser-employer-match {
+  position: absolute;
+  top: 8px;
+  left: 8px
+}

@@ -1,0 +1,23 @@
+.single-image{
+  width: 200px;
+  height: 175px;
+  border: 1px solid rgb(204, 203, 203);
+  border-radius: 8px;
+}
+
+.position-relative_icon{
+  position: relative;
+}
+
+.position-absolute_icon{
+  position: absolute;
+  top: 5px;
+  left: 145px;
+  z-index: 1;
+}
+
+.edit-profile-icon{
+  background-color: white !important;
+  border-radius: 2px;
+  padding: 2px;
+}

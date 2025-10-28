@@ -1,0 +1,14 @@
+.radioButton label {
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .radioBtn {
+    width: 16px !important; 
+    height: 16px !important;
+  }
+  .radioButton{
+    display: flex;
+    align-items: center;
+  }

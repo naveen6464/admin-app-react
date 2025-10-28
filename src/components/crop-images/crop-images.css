@@ -1,0 +1,21 @@
+.multi_image_input {
+    visibility: hidden;
+    display: none;
+  }
+  .Crop_image_input{
+    height: 150px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:2px dashed grey;
+    margin:20px 0px;
+    border-radius: 10px;
+  }
+
+  .delete-image{
+    display: inline-block;
+    border-radius: 6px;
+    border:1px solid gray;
+    padding: 3px;
+  }

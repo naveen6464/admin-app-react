@@ -1,0 +1,23 @@
+.input-class {
+    border: 1px solid #c5d0d8 ;
+    border-radius: 8px;
+    outline: none !important;
+    padding: 0;
+    height: 39.6px;
+    padding-left: 35px;
+    margin-top: 2px;
+    width: 100%;
+}
+.input-box{
+    position: relative;
+    width: 100%;
+}
+.input-icon{
+    position: absolute;
+    top: 8px;
+    left: 15px;
+}
+
+.input-class :focus{
+    border: 1px solid #2285F9;
+}

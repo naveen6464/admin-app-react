@@ -1,0 +1,13 @@
+.name-pop-up {
+  max-width: 130px !important;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis !important;
+  vertical-align: middle;
+  white-space: nowrap !important;
+}
+
+.styles_breadcrumb a{
+  text-decoration: none !important;
+  color: #000;
+}

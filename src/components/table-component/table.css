@@ -1,0 +1,133 @@
+.custom-table {
+  border-radius: 10px !important;
+  background-color: #ffffff;
+}
+
+.custom-table table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Rest of your CSS styles... */
+
+.custom-table::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-table table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.custom-table th {
+  text-align: left;
+  padding-top: 0.9rem !important;
+  padding-bottom: 0.9rem !important;
+  background-color: #e4e4e4;
+  color: #7e96a9;
+  font-size: 14px;
+  font-weight: 500 !important;
+}
+
+.custom-table td {
+  text-align: left;
+  padding-top: 12.5px !important;
+  padding-bottom: 12.5px !important;
+  max-width: 0;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden;
+  vertical-align: middle;
+  font-size: 14px;
+  padding-left: 1rem !important;
+}
+
+.custom-table tbody tr {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.custom-table-content:hover {
+  background-color: rgba(59, 89, 113, 0.1);
+}
+
+.custom-table-content:active {
+  background-color: rgba(59, 89, 113, 0.4);
+}
+.custom-table-content-row-click {
+  cursor: pointer;
+}
+.custom-table-content-row-click:hover {
+  cursor: pointer;
+  background-color: rgba(59, 89, 113, 0.1);
+}
+.custom-table thead tr {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #faf9fa;
+  color: black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 5px;
+}
+
+.action-text {
+  text-transform: capitalize;
+  text-align: end !important;
+  padding-right: 2rem !important;
+}
+
+.icons {
+  text-align: end !important;
+}
+
+.table-content-style {
+  height: 22.5rem;
+}
+.table-cursor-popup {
+  cursor: pointer;
+}
+.arrow-icon-sort {
+  position: absolute;
+  right: 10px;
+  top: 35%;
+}
+
+/* table td {
+  border-top: none !important;
+} */
+
+@media (max-width: 1500px) {
+  .custom-table {
+    overflow-y: scroll;
+    overflow-x: scroll;
+  }
+}
+@media (max-width:767px) {
+  .custom-table table {
+    width:150%
+  }
+}
+
+@media (max-width:576px) {
+  .custom-table table {
+    width:200%
+  }
+}
+
+@media (max-width: 990px) and (min-width: 300px) {
+  .custom-table td {
+    max-width: none;
+  }
+}
+@media (max-width: 350px) and (min-width: 280px) {
+  .custom-table td {
+    font-size: 12px;
+  }
+}

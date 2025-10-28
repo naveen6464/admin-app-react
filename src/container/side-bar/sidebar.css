@@ -1,0 +1,17 @@
+.menu-image:active {
+    fill: blue !important;
+    overflow: none !important
+}
+.num-rounded{
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #2285F9;
+    margin-left: 10px;
+}
