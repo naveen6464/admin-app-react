@@ -125,7 +125,7 @@ const generatePromoCode = () => {
 const decryptData = (item) => {
   if (typeof (item) === "string") {
     var CryptoJS = require("crypto-js");
-    var bytes = CryptoJS.AES.decrypt(item, "trueKarmaApi");
+    var bytes = CryptoJS.AES.decrypt(item, "secret key 123");
     var decryptedData = bytes.toString(CryptoJS.enc.Utf8).replace(/"/g, "");
     return decryptedData;
   } else {

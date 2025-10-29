@@ -2,8 +2,7 @@ const config = {
   localhost: {
     url: "http://localhost:8031/",
     adminUrl: "http://localhost:3031/",
-    apiUrl: "http://localhost:8000/dev/",
-
+    apiUrl: "http://localhost:7001/api/tecosoft-admin/",
     username: "adminLocalUser",
   },
   develop: {
@@ -26,7 +25,7 @@ const config = {
   },
 };
 
-const environment = "develop";
+const environment = "localhost";
 
 const hostConfig = {
   WEB_URL: config[environment].url,

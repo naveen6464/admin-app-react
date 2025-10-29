@@ -262,7 +262,7 @@ const DataTable = ({
                     <th
                       key={column}
                       style={{ fontWeight: "bold" }}
-                      className={`text-cente position-relative px-3
+                      className={`text-center position-relative px-4
                                         ${
                                           columnClassNames?.length > 0
                                             ? columnClassNames?.[index]
@@ -283,7 +283,7 @@ const DataTable = ({
                     onClick={() => {
                       showFilter === false ? null : handleSort(column);
                     }}
-                    className={`text-cente position-relative px-2 
+                    className={`text-cente position-relative px-4 
                                         ${
                                           columnClassNames?.length > 0
                                             ? columnClassNames?.[index]

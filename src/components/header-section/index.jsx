@@ -15,10 +15,10 @@ function HeaderSection(props) {
     sections3,
     tab,
     setTab,
-    columns
+    columns,
   } = props;
   return (
-    <div className={`header-section pb-3`}>
+    <div className={`header-section`} style={{ paddingBottom: "52px" }}>
       <div className="row ">
         <div className={`col-8 d-flex align-items-center ${headingClass}`}>
           <div className="header-title">{title}</div>
@@ -35,9 +35,9 @@ function HeaderSection(props) {
       {/* Sub Sections */}
       {sections1 && (
         <div>
-      <div className="row pt-3 sub-section cursor-pointer">
+          <div className="row pt-3 sub-section cursor-pointer">
             {sections1 && (
-              <div className={columns === "sm" ? "col-1" : "col-3" }>
+              <div className={columns === "sm" ? "col-1" : "col-3"}>
                 <div onClick={() => setTab(1)}>
                   <p
                     className={`d-inline  ${
@@ -51,7 +51,7 @@ function HeaderSection(props) {
             )}
 
             {sections2 && (
-              <div className={ "col-3" }>
+              <div className={"col-3"}>
                 <div onClick={() => setTab(2)}>
                   <p
                     className={`d-inline cursor-pointer  ${

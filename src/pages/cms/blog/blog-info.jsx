@@ -20,8 +20,6 @@ function BlogInfo(props) {
     BtnLoader,
     ActionType,
     BlogIdData,
-    // BLOG IMAGE
-    // enableSaveBtn,
     edtImages,
     setEdtImages,
     profileImage,
@@ -31,16 +29,16 @@ function BlogInfo(props) {
     Base64image1,
     bucket,
     setProfileImageValue,
-    profileImageValue
+    profileImageValue,
   } = props;
 
   const [customSelectError] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (edtImages.length > 0) {
       setProfileImageValue(true);
     }
-  },[edtImages])
+  }, [edtImages]);
 
   const CancelAction = () => {
     BackToTable();
@@ -215,78 +213,52 @@ function BlogInfo(props) {
                 )}
               </div>
             </div>
-            <div className="col-12">
-              <ReactQuill
-                QuillHeight={"about-us-editor"}
-                id="description"
-                placeholder="Type here"
-                value={formik.values.description}
-                onChange={(content) => {
-                  formik.handleChange("description")(content);
-                }}
-                className={`text_input `}
-                labelName="Description*"
-                labelClass="Quill-label mt-3 mb-1"
-                onKeyPress={spaceValidate}
-              />
-              <div className="error-space-cms">
-                {formik.touched.description && formik.errors.description && (
-                  <div className="error-txt-cms">
-                    {addErrorIcon(formik.errors.description)}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div className="col-md-6">
-              <InputField
-                name="email"
-                type="text"
-                className={` input-fields ${
-                  formik.touched.email && formik.errors.email
-                    ? "error-input-cms"
-                    : ""
-                } `}
-                placeholder="Enter your email address"
-                labelName="Email Address*"
-                value={formik.values.email}
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                onKeyPress={spaceValidate}
-              />
-              <div className="error-space-cms">
-                {formik.touched.email && formik.errors.email && (
-                  <div className="error-txt-cms">
-                    {addErrorIcon(formik.errors.email)}
-                  </div>
-                )}
-              </div>
-            </div>
             <div className="col-lg-6">
               <InputField
-                name="contributor"
+                name="author_name"
                 type="text"
                 className={`input-fields ${
-                  formik.touched.contributor && formik.errors.contributor
+                  formik.touched.author_name && formik.errors.author_name
                     ? "error-input-cms"
                     : ""
                 } `}
-                placeholder="Enter Blog Contributor"
-                labelName="Contributor*"
-                value={formik.values.contributor}
+                placeholder="Enter Author Name"
+                labelName="Author Name*"
+                value={formik.values.author_name}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 onKeyPress={alphabetValidate}
               />
               <div className="error-space-cms">
-                {formik.touched.contributor && formik.errors.contributor && (
+                {formik.touched.author_name && formik.errors.author_name && (
                   <div className="error-txt-cms">
-                    {addErrorIcon(formik.errors.contributor)}
+                    {addErrorIcon(formik.errors.author_name)}
                   </div>
                 )}
               </div>
             </div>
-        
+            <div className="col-12">
+              <ReactQuill
+                QuillHeight={"about-us-editor"}
+                id="content"
+                placeholder="Type here"
+                value={formik.values.content}
+                onChange={(content) => {
+                  formik.handleChange("content")(content);
+                }}
+                className={`text_input `}
+                labelName="Content*"
+                labelClass="Quill-label mt-3 mb-1"
+                onKeyPress={spaceValidate}
+              />
+              <div className="error-space-cms">
+                {formik.touched.content && formik.errors.content && (
+                  <div className="error-txt-cms">
+                    {addErrorIcon(formik.errors.content)}
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </form>

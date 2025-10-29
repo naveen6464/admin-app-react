@@ -16,7 +16,7 @@ import PageLoader from "../../../components/page-loader";
 import { deleteBlogData } from "../../../api/delete";
 import { MdDelete } from "react-icons/md";
 import { RiEdit2Fill } from "react-icons/ri";
-import { hostConfig } from "../../../config";
+// import { hostConfig } from "../../../config";
 import { updateBlogData } from "../../../api/update";
 import { uploadImageToS3 } from "../../../utils/files";
 import { debounce } from "lodash";
@@ -50,18 +50,19 @@ function BlogTable() {
 
   const profileImage = profileImageValue === true ? BlogIdData.id : "default";
 
-  const categoriesOption = [{
-    value: "category1",
-    label: "Category 1"
-  },
-  {
-    value: "category2",
-    label: "Category 2"
-  },
-  {
-    value: "category3",
-    label: "Category 3"
-  }
+  const categoriesOption = [
+    {
+      value: "category1",
+      label: "Category 1",
+    },
+    {
+      value: "category2",
+      label: "Category 2",
+    },
+    {
+      value: "category3",
+      label: "Category 3",
+    },
   ];
 
   // User Profile
@@ -75,18 +76,20 @@ function BlogTable() {
 
   useEffect(() => {
     setLoader(true);
-    getBlogList({ limit: pageLimit, next: true }).then((res) => {
-      setLoader(false);
-      setBlogData(res?.data?.records);
-      setTotalRecords(res?.data.filterTotalRecord);
-      setLastDataId(res?.data?.lastDataId);
-      setFirstDataId(res?.data?.firstDataId);
-      setTotalPages(res?.data?.totalPages);
-      setNoRecords(res?.data?.noRecords);
-    });
+    getBlogList({ limit: pageLimit, page: presentPage, skip: 0 }).then(
+      (res) => {
+        console.log(res);
 
+        setLoader(false);
+        setBlogData(res?.detail?.data);
+        setTotalRecords(res?.detail.total_count);
+        setLastDataId(res?.data?.lastDataId);
+        setFirstDataId(res?.data?.firstDataId);
+        setTotalPages(res?.data?.total_page);
+        setNoRecords(res?.data?.noRecords);
+      }
+    );
   }, []);
-
 
   const handleNextPage = () => {
     setLoader(true);
@@ -132,7 +135,7 @@ function BlogTable() {
 
   const handleLimitChange = (newLimit) => {
     setPageLimit(newLimit);
-    setPresentPage(1)
+    setPresentPage(1);
     setLoader(true);
     getBlogList({
       limit: newLimit,
@@ -170,6 +173,8 @@ function BlogTable() {
   const data = BlogData?.map((items) => {
     return items;
   });
+
+  console.log(data, "00000");
 
   const BlogDetailsInfo = async (row) => {
     setActionType("Edit");
@@ -229,11 +234,10 @@ function BlogTable() {
 
   const initialValues = {
     title: BlogIdData.title || "",
-    category: BlogIdData.category || "",
+    author_name: BlogIdData.author_name || "",
     summary: BlogIdData.summary || "",
-    description: BlogIdData.description || "",
-    contributor: BlogIdData.contributor || "",
-    email: BlogIdData.email || "",
+    content: BlogIdData.content || "",
+    category: BlogIdData.category || "",
   };
 
   const ErrorIcon = () => (
@@ -254,32 +258,29 @@ function BlogTable() {
   const validationSchema = Yup.object().shape({
     title: Yup.string()
       .required("Blog title is required")
-      .matches(/^[A-Za-z0-9\s]+$/, "Blog title cannot contain special characters"),
-    category: Yup.string().required("Category is required"),
+      .matches(
+        /^[A-Za-z0-9\s]+$/,
+        "Blog title cannot contain special characters"
+      ),
+    category: Yup.string(),
     summary: Yup.string().required("Summary is required"),
-    description: Yup.string()
-      .min(15, "Description must be at least 15 characters")
+    content: Yup.string()
+      .min(15, "content must be at least 15 characters")
       .nullable()
-      .test("description", "Description is required", function (value) {
+      .test("content", "content is required", function (value) {
         const sanitizedValue = sanitizeBlogDescription(value);
         return !!sanitizedValue?.trim(); // Validate the sanitized value
       }),
-    contributor: Yup.string().required("Contributor is required"),
-    email: Yup.string()
-      .email("Enter the valid email")
-      .matches(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-        "Enter the valid email"
-      )
-      .required("Email is required"),
+    author_name: Yup.string().required("Author name is required"),
   });
 
   const onSubmit = async (values) => {
     values.title = values.title.toLowerCase();
-    const formattedValue = values.title.toLowerCase().replace(/\s/g, "-");
-    values.blogFilter = formattedValue;
+    values.excerpt = "test";
+    values.cover_image_url = "test";
 
     setBtnLoader(true);
+
     if (ActionType === "Add") {
       values.createdAt = Date.now();
       if (image.length > 0) {
@@ -288,21 +289,22 @@ function BlogTable() {
         values.isProfileImage = false;
       }
       values.updatedAt = Date.now();
+
       await addBlogData(values).then((res) => {
         setBtnLoader(false);
         BackToTable();
         if (res.message === "success" || res.message === "Success") {
-          if (image.length > 0) {
-            const sources = image.map((item) => item.source);
-            if (Array.isArray(sources) && sources.length > 0) {
-              for (let index = 0; index < sources.length; index++) {
-                const item = sources[index];
-                const s3Upload = item.replace(/^data:image\/\w+;base64,/, "");
-                const filename = res?.data?.id;
-                uploadImageToS3(s3Upload, "blog", filename);
-              }
-            }
-          }
+          // if (image.length > 0) {
+          //   const sources = image.map((item) => item.source);
+          //   if (Array.isArray(sources) && sources.length > 0) {
+          //     for (let index = 0; index < sources.length; index++) {
+          //       const item = sources[index];
+          //       const s3Upload = item.replace(/^data:image\/\w+;base64,/, "");
+          //       const filename = res?.data?.id;
+          //       uploadImageToS3(s3Upload, "blog", filename);
+          //     }
+          //   }
+          // }
           toast.success("Blog created successfully");
         }
       });
@@ -326,6 +328,7 @@ function BlogTable() {
       } else {
         values.isProfileImage = profileImageValue;
       }
+
       await updateBlogData(values, BlogIdData?.id).then((res) => {
         setBtnLoader(false);
         BackToTable();
@@ -412,32 +415,32 @@ function BlogTable() {
                 loader={loader}
                 data={data}
                 columns={[
-                  "Image",
+                  // "Image",
                   "Title",
-                  "Contributor Name",
-                  "Email",
+                  "Author Name",
                   "Created At",
                   "actions",
                 ]}
                 scopedSlots={{
-                  Image: ({ row }) => (
-                    <td>
-                      <span className="mb-2">
-                        <img
-                          src={
-                            row.isProfileImage === true
-                              ? `${hostConfig.TRUEKARMA_S3_URL}blog/${row?.id
-                              }.jpg?v=
-                              ${new Date().getTime()} `
-                              : `${hostConfig.TRUEKARMA_S3_URL}blog/default.jpg`
-                          }
-                          alt="blogImage"
-                          width={80}
-                          height={70}
-                        />
-                      </span>
-                    </td>
-                  ),
+                  // Image: ({ row }) => (
+                  //   <td>
+                  //     <span className="mb-2">
+                  //       <img
+                  //         src={
+                  //           row.isProfileImage === true
+                  //             ? `${hostConfig.TRUEKARMA_S3_URL}blog/${
+                  //                 row?.id
+                  //               }.jpg?v=
+                  //             ${new Date().getTime()} `
+                  //             : `${hostConfig.TRUEKARMA_S3_URL}blog/default.jpg`
+                  //         }
+                  //         alt="blogImage"
+                  //         width={80}
+                  //         height={70}
+                  //       />
+                  //     </span>
+                  //   </td>
+                  // ),
                   Title: ({ row }) => (
                     <td className="text-capitalize align-middle">
                       <div className="align-middle" title={row?.title}>
@@ -447,22 +450,12 @@ function BlogTable() {
                       </div>
                     </td>
                   ),
-                  "Contributor Name": ({ row }) => (
+                  "Author Name": ({ row }) => (
                     <td className="align-middle">
                       <span className="">
-                        {row?.contributor?.length > 10
-                          ? row?.contributor.slice(0, 10) + "..."
-                          : row?.contributor}{" "}
-                      </span>
-                    </td>
-                  ),
-                  Email: ({ row }) => (
-                    <td className="align-middle">
-                      <span>
-                        {" "}
-                        {row?.email?.length > 30
-                          ? row?.email.slice(0, 30) + "..."
-                          : row?.email}
+                        {row?.author_name?.length > 10
+                          ? row?.author_name.slice(0, 10) + "..."
+                          : row?.author_name}{" "}
                       </span>
                     </td>
                   ),
@@ -470,7 +463,7 @@ function BlogTable() {
                   "Created At": ({ row }) => (
                     <td className="align-middle">
                       <span>
-                        {new Date(row?.createdAt).toLocaleDateString("en-US", {
+                        {new Date(row?.created_at).toLocaleDateString("en-US", {
                           year: "numeric",
                           month: "short",
                           day: "numeric",

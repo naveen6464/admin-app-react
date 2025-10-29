@@ -8,7 +8,7 @@ const loginUser = params => {
 
 const getToken = () => {
   const params = {};
-  params.domain = "https://admin.truekarma.org";
+  params.domain = "https://admin.tecosoft.org";
   return postDataApi(OTHER_CONSTANTS.get_token, params);
 }
 

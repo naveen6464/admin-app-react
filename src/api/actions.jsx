@@ -8,6 +8,8 @@ const responseHandler = (response) => {
     window.location.href = "/";
   } else if (response.status === 200) {
     return response;
+  } else if (response.status === 201) {
+    return response;
   } else if (response.status === 400) {
     return response;
   } else if (response.status === 409) {
@@ -27,7 +29,10 @@ const getListByApi = (requestUrl, params) => {
   const token = cookie.load("adminToken");
 
   if (params && params.pageLimit !== undefined)
-    getParams += `&limit=${params.pageLimit}`;
+    getParams += `&pageLimit=${params.pageLimit}`;
+
+  if (params && params.page !== undefined) getParams += `&page=${params.page}`;
+  if (params && params.skip !== undefined) getParams += `&skip=${params.skip}`;
 
   if (params && params.limit !== undefined)
     getParams += `&limit=${params.limit}`;
@@ -35,8 +40,7 @@ const getListByApi = (requestUrl, params) => {
   if (params && params.lastKey !== null && params.lastKey !== undefined)
     getParams += `&lastKey=${params.lastKey}`;
 
-  if (params && params.next !== undefined)
-    getParams += `&next=${params.next}`;
+  if (params && params.next !== undefined) getParams += `&next=${params.next}`;
 
   if (params && params.search && params.search.trim() !== "")
     getParams += `&search=${params.search.trim()}`;
@@ -65,7 +69,6 @@ const getListByApi = (requestUrl, params) => {
   }
 };
 
-
 const viewDataByApi = (requestUrl, dataId, isEvent, params) => {
   const token = cookie.load("adminToken");
   //check all the params
@@ -84,9 +87,10 @@ const viewDataByApi = (requestUrl, dataId, isEvent, params) => {
     getParams += `&eventType=${params.eventType}`;
 
   return fetch(
-    `${isEvent === "isEvent"
-      ? hostConfig.EVENT_API_URL
-      : isEvent === "partner"
+    `${
+      isEvent === "isEvent"
+        ? hostConfig.EVENT_API_URL
+        : isEvent === "partner"
         ? hostConfig.PARTNER_API_URL
         : hostConfig.API_URL
     }${requestUrl}/${dataId}${getParams}`,
@@ -110,23 +114,19 @@ const viewDataByApi = (requestUrl, dataId, isEvent, params) => {
     });
 };
 
-
-
 const postDataApi = (requestUrl, params) => {
   const token = cookie.load("adminToken");
 
-  return fetch(
-    `${hostConfig.API_URL}${requestUrl}`,
-    {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        Accept: "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify(params),
-    }
-  )
+  return fetch(`${hostConfig.API_URL}${requestUrl}`, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      // Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify(params),
+  })
     .then((response) => {
       return responseHandler(response);
     })
@@ -142,18 +142,16 @@ const putDataApi = (requestUrl, params, id) => {
   const token = cookie.load("adminToken");
   let getParams = "?";
 
-  return fetch(
-    `${hostConfig.API_URL}${requestUrl}/${id}${getParams}`,
-    {
-      method: "PUT",
-      mode: "cors",
-      headers: {
-        Accept: "application/json",
-        Authorization: "Bearer " + token,
-      },
-      body: JSON.stringify(params),
-    }
-  )
+  return fetch(`${hostConfig.API_URL}${requestUrl}/${id}${getParams}`, {
+    method: "PUT",
+    mode: "cors",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify(params),
+  })
     .then((response) => {
       return responseHandler(response);
     })
@@ -164,8 +162,6 @@ const putDataApi = (requestUrl, params, id) => {
       errorHandler(error);
     });
 };
-
-
 
 const deleteDataApi = (requestUrl, id) => {
   const token = cookie.load("adminToken");
@@ -193,12 +189,4 @@ const deleteDataApi = (requestUrl, id) => {
     });
 };
 
-
-
-export {
-  getListByApi,
-  viewDataByApi,
-  postDataApi,
-  putDataApi,
-  deleteDataApi,
-};
+export { getListByApi, viewDataByApi, postDataApi, putDataApi, deleteDataApi };

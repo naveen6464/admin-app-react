@@ -7,14 +7,13 @@ const getBlogList = (params) => {
   return getListByApi(URL_CONSTANTS.blog, params);
 };
 
-
-const getOpenTickets = (params) => {
-  params.status = "open";
-  return getListByApi(URL_CONSTANTS.support, params);
+const getWhitePaperList = (params) => {
+  return getListByApi(URL_CONSTANTS.whitepaper, params);
 };
+
 
 
 export {
   getBlogList,
-  getOpenTickets,
+  getWhitePaperList
 };

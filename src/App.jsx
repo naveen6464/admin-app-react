@@ -1,5 +1,6 @@
 /** **************************** Import Packages ****************************** */
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
@@ -8,37 +9,37 @@ import { Toaster } from "react-hot-toast";
 import { DarkTheme } from "./constants/themes";
 /** **************************** Import Pages ****************************** */
 import Login from "./container/login";
-import { getToken } from "./api/others";
-import cookie from "react-cookies";
+// import { getToken } from "./api/others";
+// import cookie from "react-cookies";
 /** **************************** Import CSS ****************************** */
 import "./App.css";
 import { hostConfig } from "./config";
 
 const App = () => {
 
-  useEffect(() => {
-    // const token = cookie.load("adminToken");
-    const currentDate = new Date();
-    const expiry = cookie.load("adminTokenExpire");
-    const accessExpiryTime = new Date(expiry ? expiry : currentDate);
+  // useEffect(() => {
+  //   // const token = cookie.load("adminToken");
+  //   const currentDate = new Date();
+  //   const expiry = cookie.load("adminTokenExpire");
+  //   const accessExpiryTime = new Date(expiry ? expiry : currentDate);
 
-    // Add 1 hour to the current date
-    const currentDatePlusOneHour = new Date(
-      currentDate.getTime() + 1 * 60 * 60 * 1000
-    );
+  //   // Add 1 hour to the current date
+  //   const currentDatePlusOneHour = new Date(
+  //     currentDate.getTime() + 1 * 60 * 60 * 1000
+  //   );
     
-    // Check if the token exists and if the expiry time is greater than currentDate + 1 hour
-    if (Number(accessExpiryTime) < Number(currentDatePlusOneHour )) {
-      getToken().then((result) => {
+  //   // Check if the token exists and if the expiry time is greater than currentDate + 1 hour
+  //   if (Number(accessExpiryTime) < Number(currentDatePlusOneHour )) {
+  //     getToken().then((result) => {
        
-        if (result && result?.data && result?.data?.token) {
-          // Save the new token and expiry time
-          cookie.save("adminToken", result?.data?.token);
-          cookie.save("adminTokenExpire", result?.data?.expirationTime);
-        }
-      });
-    }
-  }, []); // Empty dependency array to run only once
+  //       if (result && result?.data && result?.data?.token) {
+  //         // Save the new token and expiry time
+  //         cookie.save("adminToken", result?.data?.token);
+  //         cookie.save("adminTokenExpire", result?.data?.expirationTime);
+  //       }
+  //     });
+  //   }
+  // }, []); // Empty dependency array to run only once
 
   const Layout = React.lazy(() => import("./container/Layout"));
   

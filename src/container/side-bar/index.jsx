@@ -1,8 +1,8 @@
 /* ****************************** Import Packages ***************************** */
 import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import Max_Logo from "../../assets/truekarma-full-logo.svg";
-import Min_Logo from "../../assets/truekarma-logo.svg";
+// import Max_Logo from "../../assets/tecosoft-black.svg";
+import Min_Logo from "../../assets/logo.svg";
 import "./sidebar.css";
 
 const Sidebar = (props) => {
@@ -16,300 +16,168 @@ const Sidebar = (props) => {
     profileDropdownClose,
   } = props;
 
-  const [childrenActive, setChildrenActive] = useState(false);
-  const [clickedName, setClickedName] = useState("");
+  // const [childrenActive, setChildrenActive] = useState(false);
+  // const [clickedName, setClickedName] = useState("");
+  const [, setChildrenActive] = useState(false);
+  const [, setClickedName] = useState("");
   const location = useLocation();
- 
 
   return (
     <div
       role="none"
-      className={`sidebar ${sidebarState ? "close" : "open"} `}
+      className={`modern-sidebar ${sidebarState ? "minimized" : "expanded"}`}
       onClick={profileDropdownClose}
     >
-      <div className="sidebar-logo" style={{ paddingTop: "3px" }}>
-        {sidebarState === false ? (
-          <div className="d-flex justify-content-center">
-            <img
-              src={Max_Logo}
-              alt="sidebar-logo"
-              // className="sidebar-logo"
-              width="85%"
-              height="45"
-            />
-          </div>
-        ) : (
-          <div>
-            <img
-              src={Min_Logo}
-              alt="sidebar-logo"
-              // className="sidebar-logo"
-              width="33"
-              height="55"
-            />
-          </div>
-        )}
+      {/* Logo Section */}
+      <div className="sidebar-header">
+        <div className="logo-container">
+          {sidebarState === false ? (
+            <div className="d-flex align-items-center">
+              <div className="logo-icon">
+                <img src={Min_Logo} alt="logo" width="32" height="32" />
+              </div>
+              <span className="brand-name ms-2">Tecosoft</span>
+            </div>
+          ) : (
+            <div className="logo-icon-minimized">
+              <img src={Min_Logo} alt="logo" width="32" height="32" />
+            </div>
+          )}
+        </div>
       </div>
+
+      {/* Navigation Links */}
       <ul
         role="none"
-        className={`nav-links ${sidebarState ? "" : ""} ${
+        className={`modern-nav-links ${
           scrollActive && sidebarState === false
             ? "scroll-active"
             : "scroll-inactive"
         }`}
         onMouseDown={(e) => handleEvent(e)}
       >
-        {Routes.map((item) => {
+        {Routes.map((item, idx) => {
           return (
-            <>
+            <React.Fragment key={idx}>
               {!item?.subMenu ? (
-                <li className="width-inherit">
+                <li className="nav-item">
                   <NavLink
                     to={item?.route}
                     className={
                       location.pathname === item?.route
-                        ? "menu-item active-route"
-                        : "menu-item"
+                        ? "nav-link active"
+                        : "nav-link"
                     }
                     onClick={() => {
                       setClickedName(item?.name);
                       handleArrow("none");
                     }}
                   >
-                    {location.pathname === item?.route ? (
-                      <img
-                        src={item?.fillImage}
-                        alt={item.name}
-                        className="menu-image"
-                      />
-                    ) : (
-                      <img
-                        src={item?.image}
-                        alt={item.name}
-                        className="menu-image"
-                      />
+                    <div className="nav-icon">
+                      {location.pathname === item?.route ? (
+                        <img
+                          src={item?.fillImage}
+                          alt={item.name}
+                          width="20"
+                          height="20"
+                        />
+                      ) : (
+                        <img
+                          src={item?.image}
+                          alt={item.name}
+                          width="20"
+                          height="20"
+                        />
+                      )}
+                    </div>
+                    {!sidebarState && (
+                      <span className="nav-text">{item?.name}</span>
                     )}
-
-                    <span className="link-name">
-                      {item.name === "Banner" ? "Banner Ads" : item?.name}
-                      &nbsp;{" "}
-                      <span>
-                        {item.name === "Contacts" ? (
-                          data?.[0]?.totalUnViewedEnquiresCount &&
-                          data?.[0]?.totalUnViewedEnquiresCount > 0 ? (
-                            <div className="num-rounded">
-                              {data?.[0]?.totalUnViewedEnquiresCount}
-                            </div>
-                          ) : null
-                        ) : null}
-                      </span>
-                    </span>
                   </NavLink>
-                  <ul
-                    className={
-                      sidebarState
-                        ? "submenu minimized blank p-0"
-                        : "submenu blank p-0"
-                    }
-                  >
-                    <li
-                      className={
-                        location.pathname === item?.route ? "active-color" : ""
-                      }
-                    >
-                      <NavLink
-                        to={item?.route}
-                        className="link-name menu-item"
-                        onClick={() => setClickedName(item?.name)}
-                      >
-                        {item.name === "Banner" ? "Banner Ads" : item?.name}
-                      </NavLink>
-                    </li>
-                  </ul>
+
+                  {/* Tooltip for minimized state */}
+                  {sidebarState && (
+                    <div className="nav-tooltip">{item?.name}</div>
+                  )}
                 </li>
               ) : (
                 <li
-                  className={`${
-                    arrow?.[item.name]
-                      ? ` ${
-                          childrenActive
-                            ? "showMenu parentSubmenu"
-                            : "showMenu "
-                        } `
-                      : `${
-                          childrenActive ? "parentSubmenu " : "width-inherit"
-                        } `
+                  className={`nav-item has-submenu ${
+                    arrow?.[item.name] ? "expanded" : ""
                   }`}
                 >
                   <div
                     role="none"
-                    className={`iocn-links ${
+                    className={`nav-link ${
                       item?.subMenu?.some((e) => e.route === location.pathname)
-                        ? "active-route"
+                        ? "active"
                         : ""
                     }`}
                     onClick={() => handleArrow(item.name)}
                   >
-                    <NavLink
-                      to="#"
-                      className={
-                        location.pathname === item?.route
-                          ? "menu-item active-route"
-                          : "menu-item"
-                      }
-                      onClick={() => setClickedName(item?.name)}
-                    >
-                      {/*  */}
+                    <div className="nav-icon">
                       {item?.subMenu?.some(
                         (e) => e.route === location.pathname
                       ) ? (
                         <img
                           src={item.fillImage}
                           alt={item.name}
-                          className={
-                            location.pathname === item?.route
-                              ? "menu-image"
-                              : ""
-                          }
+                          width="20"
+                          height="20"
                         />
                       ) : (
                         <img
                           src={item.image}
                           alt={item.name}
-                          className={
-                            location.pathname === item?.route
-                              ? "menu-image"
-                              : ""
-                          }
+                          width="20"
+                          height="20"
                         />
                       )}
-                      <span className="link-name">
-                        {item.name}
-                        {item.name === "Approvals" ? (
-                          totalUnViewApprovalsCounter &&
-                          totalUnViewApprovalsCounter > 0 ? (
-                            <div className="num-rounded">
-                              {totalUnViewApprovalsCounter}
-                            </div>
-                          ) : null
-                        ) : null}
-                      </span>
-                      {!sidebarState
-                        ? item.subMenu &&
-                          clickedName === item?.name &&
-                          arrow[clickedName]
-                          ? item?.iconOpened
-                          : item?.iconClosed
-                        : null}
-                    </NavLink>
+                    </div>
+                    {!sidebarState && (
+                      <>
+                        <span className="nav-text">{item.name}</span>
+                        <span className="nav-arrow">
+                          {arrow[item.name]
+                            ? item?.iconOpened
+                            : item?.iconClosed}
+                        </span>
+                      </>
+                    )}
                   </div>
-                  <ul
-                    className={
-                      sidebarState ? "submenu minimized p-0" : "submenu p-0"
-                    }
-                  >
-                    <li
-                      className={`hover-class ${
-                        item?.subMenu?.some(
-                          (e) => e.route === location.pathname
-                        )
-                          ? "active-color"
-                          : ""
-                      }`}
-                    >
-                      <NavLink
-                        to="#"
-                        className="link-name menu-item"
-                        onClick={() => setClickedName(item?.name)}
-                      >
-                        {item.name}
-                        <span></span>
-                      </NavLink>
-                    </li>
-                    {item?.subMenu?.map((item, index) => (
-                      <li
-                        key={index}
-                        role="none"
-                        className="d-flex justify-content-center sub-menu-height"
-                        onMouseEnter={() => setChildrenActive(true)}
-                        onMouseLeave={() => setChildrenActive(false)}
-                      >
-                        <NavLink
-                          to={item?.route}
-                          className={
-                            location.pathname === item?.route
-                              ? "menu-item "
-                              : "menu-item"
-                          }
-                        >
-                          <span
-                            className={`${
-                              sidebarState
-                                ? "link-name-submenu minimized"
-                                : "link-name-submenu "
-                            } ${
-                              location.pathname === item?.route
-                                ? "active-route sub-menu-active"
-                                : ""
-                            }`}
-                          >
-                            {item.name}
 
-                            {item.name === "FR withdraw" ? (
-                              data?.[0]?.totalUnViewFundraiserWithdraw &&
-                              data?.[0]?.totalUnViewFundraiserWithdraw > 0 ? (
-                                <div className="num-rounded">
-                                  {data?.[0]?.totalUnViewFundraiserWithdraw}
-                                </div>
-                              ) : null
-                            ) : item.name === "Events withdraw" ? (
-                              data?.[0]?.totalUnViewedEventWithdraw &&
-                              data?.[0]?.totalUnViewedEventWithdraw > 0 ? (
-                                <div className="num-rounded">
-                                  {data?.[0]?.totalUnViewedEventWithdraw}
-                                </div>
-                              ) : null
-                            ) : item.name === "Non Cash" ? (
-                              data?.[0]?.totalUnViewedNonCashCount &&
-                              data?.[0]?.totalUnViewedNonCashCount > 0 ? (
-                                <div className="num-rounded">
-                                  {data?.[0]?.totalUnViewedNonCashCount}
-                                </div>
-                              ) : null
-                            ) : item.name === "Charity" ? (
-                              data?.[0]?.totalUnViewCharity &&
-                              data?.[0]?.totalUnViewCharity > 0 ? (
-                                <div className="num-rounded">
-                                  {data?.[0]?.totalUnViewCharity}
-                                </div>
-                              ) : null
-                            ) : item.name === "Partners" ? (
-                              data?.[0]?.partnerRequestUnViewCount &&
-                              data?.[0]?.partnerRequestUnViewCount > 0 ? (
-                                <div className="num-rounded">
-                                  {data?.[0]?.partnerRequestUnViewCount}
-                                </div>
-                              ) : null
-                            ) : item.name === "Partners withdraw" ? (
-                              data?.[0]?.partnerWithdrawRequestUnViewedCount &&
-                              data?.[0]?.partnerWithdrawRequestUnViewedCount >
-                                0 ? (
-                                <div className="num-rounded">
-                                  {
-                                    data?.[0]
-                                      ?.partnerWithdrawRequestUnViewedCount
-                                  }
-                                </div>
-                              ) : null
-                            ) : null}
-                          </span>
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Submenu */}
+                  {arrow[item.name] && !sidebarState && (
+                    <ul className="submenu-list">
+                      {item?.subMenu?.map((subItem, subIdx) => (
+                        <li
+                          key={subIdx}
+                          className="submenu-item"
+                          onMouseEnter={() => setChildrenActive(true)}
+                          onMouseLeave={() => setChildrenActive(false)}
+                        >
+                          <NavLink
+                            to={subItem?.route}
+                            className={
+                              location.pathname === subItem?.route
+                                ? "submenu-link active"
+                                : "submenu-link"
+                            }
+                          >
+                            <span className="submenu-text">{subItem.name}</span>
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* Tooltip for minimized state */}
+                  {sidebarState && (
+                    <div className="nav-tooltip">{item?.name}</div>
+                  )}
                 </li>
               )}
-            </>
+            </React.Fragment>
           );
         })}
       </ul>

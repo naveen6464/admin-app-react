@@ -53,7 +53,7 @@ export default function CropImages(props) {
       const selectedFile = e.target.files[0];
 
       // Check if the file size is more than 5 MB
-      if (selectedFile.size > 5 * 1024 * 1024) {
+      if (selectedFile.size > 10 * 1024 * 1024) {
         toast.error(
           "Selected image is too large. Please choose an image smaller than 5 MB."
         );

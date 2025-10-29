@@ -2,11 +2,12 @@
 const URL_CONSTANTS = {
   "blog": "blogs",
   "contact_us": "contact-us",
+  "whitepaper": "whitepapers",
 }
 
 const OTHER_CONSTANTS = {
   "get_token":"get-token",
-  "login": "login",
+  "login": "admin/login",
   "verify": "verify",
 }
 
