@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 export const LayoutStyled = styled.div`
-  .sidebar {
+  .modern-sidebar {
     position: fixed;
     top: 0;
     left: 10px;
@@ -15,7 +15,7 @@ export const LayoutStyled = styled.div`
     -webkit-transition: all 0.4s ease-in-out;
   }
 
-  .sidebar-logo {
+  .modern-sidebar-logo {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,7 +67,7 @@ export const LayoutStyled = styled.div`
   //   filter: brightness(0) invert(1);
   // }
 
-  .sidebar.close {
+  .modern-sidebar.minimized {
     width: 78px;
     overflow: inherit;
     transition: all 0.4s ease-in-out;
@@ -87,14 +87,14 @@ export const LayoutStyled = styled.div`
     font-weight: 600 !important;
   }
 
-  .sidebar .logo-details {
+  .modern-sidebar .logo-details {
     height: 60px;
     width: 100%;
     display: flex;
     align-items: center;
   }
 
-  .sidebar .logo-details i {
+  .modern-sidebar .logo-details i {
     font-size: 30px;
     color: black;
     height: 50px;
@@ -104,7 +104,7 @@ export const LayoutStyled = styled.div`
     cursor: pointer;
   }
 
-  .sidebar .logo-details .logo_name {
+  .modern-sidebar .logo-details .logo_name {
     font-size: 22px;
     color: black;
     font-weight: 600;
@@ -112,17 +112,17 @@ export const LayoutStyled = styled.div`
     transition-delay: 0.1s;
   }
 
-  .sidebar.close .logo-details .logo_name {
+  .modern-sidebar.minimized .logo-details .logo_name {
     transition-delay: 0s;
     opacity: 0;
     pointer-events: none;
   }
 
-  .sidebar.close.nav-links {
+  .modern-sidebar.minimized.nav-links {
     overflow: visible;
   }
 
-  .sidebar .nav-links {
+  .modern-sidebar .nav-links {
     height: 88vh;
     padding: 0px 0 150px 0;
     overflow: auto;
@@ -134,17 +134,17 @@ export const LayoutStyled = styled.div`
     align-items: center;
   }
 
-  .sidebar .nav-links::-webkit-scrollbar {
+  .modern-sidebar .nav-links::-webkit-scrollbar {
     display: none;
     overflow-y: auto;
   }
 
-  .close .nav-links {
+  .minimized .nav-links {
     overflow: visible;
     background: #ffffff;
   }
 
-  .open .nav-links {
+  .expanded .nav-links {
     overflow: scroll;
     height: 88vh;
     margin-bottom: 27px;
@@ -160,20 +160,20 @@ export const LayoutStyled = styled.div`
     touch-action: auto;
   }
 
-  .sidebar .nav-links li {
+  .modern-sidebar .nav-links li {
     position: relative;
     list-style: none;
     transition: all 0.35s ease;
     padding-left: 4px;
   }
 
-  .sidebar .nav-links li .iocn-links {
+  .modern-sidebar .nav-links li .iocn-links {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  .sidebar .nav-links li i {
+  .modern-sidebar .nav-links li i {
     height: 50px;
     min-width: 78px;
     text-align: center;
@@ -184,22 +184,22 @@ export const LayoutStyled = styled.div`
     transform: all 0.35s ease;
   }
 
-  .sidebar .nav-links li.showMenu i.arrow {
+  .modern-sidebar .nav-links li.showMenu i.arrow {
     transform: rotate(-180deg);
   }
 
-  .sidebar.close .nav-links i.arrow {
+  .modern-sidebar.minimized .nav-links i.arrow {
     display: none;
   }
 
-  .sidebar .nav-links li a {
+  .modern-sidebar .nav-links li a {
     display: flex;
     align-items: center;
     text-decoration: none;
   }
 
   /* ===== Handle Submenu while minimized ===== */
-  .sidebar .nav-links li a .link-name {
+  .modern-sidebar .nav-links li a .link-name {
     font-size: 16px;
     font-weight: 400;
     width: 100%;
@@ -225,7 +225,7 @@ export const LayoutStyled = styled.div`
   }
 
 
-  .sidebar .nav-links li a .link-name-submenu {
+  .modern-sidebar .nav-links li a .link-name-submenu {
     font-size: 16px;
     font-weight: 400;
     width: 100%;
@@ -238,19 +238,19 @@ export const LayoutStyled = styled.div`
     color: black;
   }
 
-  .sidebar .nav-links li a .link-name-submenu.minimized {
+  .modern-sidebar .nav-links li a .link-name-submenu.minimized {
     padding-left: 2rem !important;
   }
   .active-route > .link-name-submenu {
     color: #2285F9 !important;
   }
 
-  .sidebar .close .nav-links li a .link-name {
+  .modern-sidebar .minimized .nav-links li a .link-name {
     opacity: 0;
     pointer-events: none;
   }
 
-  .sidebar .nav-links li .submenu {
+  .modern-sidebar .nav-links li .submenu {
     // padding: 6px 6px 14px 80px;
     /* margin-top: -10px; */
     background-color: #ffffff;
@@ -258,15 +258,15 @@ export const LayoutStyled = styled.div`
     display: none;
   }
 
-  .sidebar .nav-links li .submenu.minimized {
+  .modern-sidebar .nav-links li .submenu.minimized {
     background-color: #ffffff;
   }
 
-  .sidebar .nav-links li.showMenu .submenu {
+  .modern-sidebar .nav-links li.showMenu .submenu {
     display: block;
   }
 
-  .sidebar .nav-links li .submenu a {
+  .modern-sidebar .nav-links li .submenu a {
     color: black;
     font-size: 15px;
     /* padding: 0.5rem 0 0 1rem; */
@@ -277,16 +277,16 @@ export const LayoutStyled = styled.div`
     height: 45px !important;
   }
 
-  .sidebar.close .nav-links li a .link-name {
+  .modern-sidebar.minimized .nav-links li a .link-name {
     display: none;
   }
 
-  .sidebar.close .nav-links li i .link-name:hover {
+  .modern-sidebar.minimized .nav-links li i .link-name:hover {
     width: inherit;
     display: block;
   }
 
-  .sidebar.close .nav-links li .submenu {
+  .modern-sidebar.minimized .nav-links li .submenu {
     position: absolute;
     left: 100%;
     top: -10;
@@ -302,7 +302,7 @@ export const LayoutStyled = styled.div`
     padding-left: 0px;
   }
 
-  .sidebar.close .nav-links li:hover .submenu {
+  .modern-sidebar.minimized .nav-links li:hover .submenu {
     top: 0;
     opacity: 1;
     pointer-events: auto;
@@ -310,17 +310,17 @@ export const LayoutStyled = styled.div`
     padding-left: 0px;
   }
 
-  .sidebar .nav-links li .submenu .link-name {
+  .modern-sidebar .nav-links li .submenu .link-name {
     display: none;
   }
 
-  .sidebar.close .nav-links li .submenu .link-name {
+  .modern-sidebar.minimized .nav-links li .submenu .link-name {
     font-size: 16px;
     opacity: 1;
     display: flex;
   }
 
-  .sidebar .nav-links li .submenu .blank {
+  .modern-sidebar .nav-links li .submenu .blank {
     opacity: 1;
     pointer-events: auto;
     padding: 3px 20px 6px 16px;
@@ -328,7 +328,7 @@ export const LayoutStyled = styled.div`
     pointer-events: none;
   }
 
-  .sidebar .nav-links a:hover .submenu .blank {
+  .modern-sidebar .nav-links a:hover .submenu .blank {
     top: 50%;
     transition: translateY(-50%);
     background-color: green;
@@ -345,30 +345,30 @@ export const LayoutStyled = styled.div`
     transition: all 0.5s ease;
   }
 
-  .sidebar.close ~ .Home-section {
+  .modern-sidebar.minimized ~ .Home-section {
     left: 78px;
     width: calc(100% - 78px);
   }
 
-  .Home-section .home-content {
+  .Home-section .modern-header {
     height: 50px;
     display: flex;
     align-items: center;
     z-index: 10;
   }
 
-  .Home-section .home-content .bx-menu,
-  .Home-section .home-content .text {
+  .Home-section .modern-header .bx-menu,
+  .Home-section .modern-header .text {
     color: #11101d;
     font-size: 35px;
   }
 
-  .Home-section .home-content .text {
+  .Home-section .modern-header .text {
     font-size: 16px;
     font-weight: 400;
   }
 
-  .Home-section .home-content .bx-menu {
+  .Home-section .modern-header .bx-menu {
     margin: 0 15px;
     cursor: pointer;
   }
@@ -403,7 +403,7 @@ export const LayoutStyled = styled.div`
   }
 
 
-  .home-content {
+  .modern-header {
     background: #f8f9fc;
     position: sticky;
     top: 0;
@@ -419,29 +419,29 @@ export const LayoutStyled = styled.div`
     margin-right: 0.5rem;
   }
 
-  .Home-section .home-content {
-    height: 50px;
+  .Home-section .modern-header {
+    height: 60px;
     display: flex;
     align-items: center;
   }
 
-  .Home-section .home-content .bx-menu,
-  .Home-section .home-content .text {
+  .Home-section .modern-header .bx-menu,
+  .Home-section .modern-header .text {
     color: #11101d;
     font-size: 35px;
   }
 
-  .Home-section .home-content .text {
+  .Home-section .modern-header .text {
     font-size: 16px;
     font-weight: 400;
   }
 
-  .Home-section .home-content .bx-menu {
+  .Home-section .modern-header .bx-menu {
     margin: 0 15px;
     cursor: pointer;
   }
 
-  .sidebar.close ~ .Home-section {
+  .modern-sidebar.minimized ~ .Home-section {
     left: 89px;
     width: calc(100% - 89px);
   }

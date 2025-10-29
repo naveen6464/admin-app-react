@@ -1,9 +1,9 @@
 /** ***************************** Import Libraries ****************************** */
 import React from "react";
-import {
-  MdOutlineKeyboardArrowDown,
-  MdOutlineKeyboardArrowUp,
-} from "react-icons/md";
+// import {
+//   MdOutlineKeyboardArrowDown,
+//   MdOutlineKeyboardArrowUp,
+// } from "react-icons/md";
 
 /** ****************************** Import Images ********************************* */
 // import DashboardIcon from "../assets/dashboard-icons/dashboard-icons.svg";
@@ -47,6 +47,7 @@ const routes = [
     id: 1,
     element: Blog,
   },
+  
   // CMS
   {
     name: "White-papers",
@@ -61,33 +62,33 @@ const routes = [
   },
 
   // Users
-  {
-    name: "Generic",
-    image: CMS,
-    fillImage: CMSFill,
-    icon: (
-      <i className="fa-sharp fa-regular fa-circle-dollar-to-slot  icons-dynamic"></i>
-    ),
-    id: 3,
-    iconClosed: (
-      <MdOutlineKeyboardArrowDown size={30} className="icons-dynamic" />
-    ),
-    iconOpened: (
-      <MdOutlineKeyboardArrowUp size={30} className="icons-dynamic" />
-    ),
-    subMenu: [
-      {
-        route: "/white-papers",
-        name: "White-papers",
-        element: WhitePaper,
-      },
-      {
-        route: "/blogs",
-        name: "Blogs",
-        element: Blog,
-      },
-    ],
-  },
+  // {
+  //   name: "Generic",
+  //   image: CMS,
+  //   fillImage: CMSFill,
+  //   icon: (
+  //     <i className="fa-sharp fa-regular fa-circle-dollar-to-slot  icons-dynamic"></i>
+  //   ),
+  //   id: 3,
+  //   iconClosed: (
+  //     <MdOutlineKeyboardArrowDown size={30} className="icons-dynamic" />
+  //   ),
+  //   iconOpened: (
+  //     <MdOutlineKeyboardArrowUp size={30} className="icons-dynamic" />
+  //   ),
+  //   subMenu: [
+  //     {
+  //       route: "/white-papers",
+  //       name: "White-papers",
+  //       element: WhitePaper,
+  //     },
+  //     {
+  //       route: "/blogs",
+  //       name: "Blogs",
+  //       element: Blog,
+  //     },
+  //   ],
+  // },
 ];
 
 export default routes;

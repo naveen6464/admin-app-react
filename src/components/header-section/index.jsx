@@ -18,10 +18,10 @@ function HeaderSection(props) {
     columns,
   } = props;
   return (
-    <div className={`header-section`} style={{ paddingBottom: "52px" }}>
+    <div className={`header-section pb-3`} >
       <div className="row ">
         <div className={`col-8 d-flex align-items-center ${headingClass}`}>
-          <div className="header-title">{title}</div>
+          <div className="header-title pt-3">{title}</div>
         </div>
         <div
           className={`col-6 align-items-center  ${ClassContent} ${

@@ -18,8 +18,8 @@ const Sidebar = (props) => {
 
   // const [childrenActive, setChildrenActive] = useState(false);
   // const [clickedName, setClickedName] = useState("");
-  const [, setChildrenActive] = useState(false);
-  const [, setClickedName] = useState("");
+  const [,setChildrenActive] = useState(false);
+  const [,setClickedName] = useState("");
   const location = useLocation();
 
   return (
@@ -34,13 +34,13 @@ const Sidebar = (props) => {
           {sidebarState === false ? (
             <div className="d-flex align-items-center">
               <div className="logo-icon">
-                <img src={Min_Logo} alt="logo" width="32" height="32" />
+                <img src={Min_Logo} alt="logo" width="38" height="38"  />
               </div>
               <span className="brand-name ms-2">Tecosoft</span>
             </div>
           ) : (
             <div className="logo-icon-minimized">
-              <img src={Min_Logo} alt="logo" width="32" height="32" />
+              <img src={Min_Logo} alt="logo" width="38" height="38" />
             </div>
           )}
         </div>
