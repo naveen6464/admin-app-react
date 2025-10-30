@@ -16,12 +16,11 @@ import { useSelector } from "react-redux";
 
 /******************Import rotes to route the content based on routes*********************/
 import routes from "../../constants/routes";
+import ProfileMenus from "../../constants/profile-menus";
 // import { toSnakeCase } from "../../utils";
 
 const Content = (props) => {
-  const {
-    onClick,
-  } = props;
+  const { onClick } = props;
 
   const sidebardata = useSelector(
     (store) => store.SideBar.storeSideBarMinimizer
@@ -29,37 +28,43 @@ const Content = (props) => {
 
   const navBar = useSelector((store) => store.NavbarReduce.NavBarMinimizer);
 
-
   return (
     <LazyMotion features={domAnimation}>
       <ContentStyled
         sidebardata={sidebardata}
         sidebardata1={navBar}
-        onClick={()=>onClick()}
+        onClick={() => onClick()}
       >
         <Container>
-          <div
-            key={window.location.pathname}
-          >
+          <div key={window.location.pathname}>
             <Suspense
               fallback={
-                <div className="d-flex justify-content-center align-items-center">
-                </div>
+                <div className="d-flex justify-content-center align-items-center"></div>
               }
             >
-               <Switch>
-              {routes?.map((route, index) =>
-                route?.subMenu ? (
-                  route?.subMenu?.map((child, idx) => (
+              <Switch>
+                {routes?.map((route, index) =>
+                  route?.subMenu ? (
+                    route?.subMenu?.map((child, idx) => (
+                      <Route
+                        key={idx}
+                        path={child.route}
+                        exact={child.exact}
+                        name={child.name}
+                        render={(props) => <child.element {...props} />}
+                      />
+                    ))
+                  ) : (
                     <Route
-                      key={idx}
-                      path={child.route}
-                      exact={child.exact}
-                      name={child.name}
-                      render={(props) => <child.element {...props} />}
+                      key={index}
+                      path={route.route}
+                      exact={route.exact}
+                      name={route.name}
+                      render={(props) => <route.element {...props} />}
                     />
-                  ))
-                ) : (
+                  )
+                )}
+                {ProfileMenus?.map((route, index) => (
                   <Route
                     key={index}
                     path={route.route}
@@ -67,9 +72,17 @@ const Content = (props) => {
                     name={route.name}
                     render={(props) => <route.element {...props} />}
                   />
-                )
-              )}
-            </Switch>
+                ))}
+
+                <Route
+                  path="*"
+                  render={() => (
+                    <div className="d-flex justify-content-center align-items-center">
+                      <h1>404</h1>
+                    </div>
+                  )}
+                />
+              </Switch>
             </Suspense>
           </div>
         </Container>

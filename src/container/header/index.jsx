@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdMenu } from "react-icons/md";
+import { useHistory } from "react-router-dom";
 
 /***************************** Import Actions and API's *****************************/
 import { profileDropDown } from "../../redux/action/profile-dropdown.action";
@@ -12,6 +13,7 @@ import { deleteLocalUser, getLocalUser } from "../../utils/auth";
 
 const Header = ({ handleSidebarMinimize }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [profileHover, setProfileHover] = useState(false);
   const [userData, setUserData] = useState({});
@@ -110,12 +112,12 @@ const Header = ({ handleSidebarMinimize }) => {
                   </div>
                 </div>
 
-                <div className="dropdown-divider"></div>
-
-                <button className="dropdown-item">
+                <button
+                  className="dropdown-item"
+                  onClick={() => history.push("/profile-details")}
+                >
                   <i className="ri-user-3-line me-2"></i> Profile
                 </button>
-
                 <button className="dropdown-item">
                   <i className="ri-settings-3-line me-2"></i> Settings
                 </button>

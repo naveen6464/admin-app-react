@@ -11,9 +11,14 @@ const getWhitePaperList = (params) => {
   return getListByApi(URL_CONSTANTS.whitepaper, params);
 };
 
+const getAdminUserList = (params) => {
+  return getListByApi(URL_CONSTANTS.admin, params);
+};
+
 
 
 export {
   getBlogList,
-  getWhitePaperList
+  getWhitePaperList,
+  getAdminUserList
 };

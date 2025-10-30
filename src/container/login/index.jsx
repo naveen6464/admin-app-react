@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 import { useHistory } from "react-router-dom";
 import { CircleSpinner } from "react-spinners-kit";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import cookie from "react-cookies";
 
 import TecosoftLogo from "../../assets/logo.svg";
 import { loginUser } from "../../api/others";
@@ -47,22 +48,26 @@ function Login() {
 
   const onSubmit = async (values) => {
     setButtonLoader(true);
-    await loginUser(values)
-      .then((res) => {
-        if (res?.detail.success === true) {
-          toast.success("Login Successful");
-          history.push("/blogs");
-          saveLocalUser(res?.detail?.data);
-          setButtonLoader(false);
-        } else {
-          toast.error("Login Unsuccessful");
-          setButtonLoader(false);
-        }
-      })
-      .catch(() => {
+    try {
+      const res = await loginUser(values);
+      console.log(res, "988998");
+      console.log("Success check:", res?.detail?.success); // Debug: Confirms condition
+
+      if (res?.detail?.success === true) {
+        saveLocalUser(res?.detail?.data);
+        cookie.save("adminToken", res?.detail?.data?.access_token); // Fixed: Use 'res', not 'result'
+        toast.success("Login Successful");
+        history.push("/blogs");
+      } else {
+        console.log("API success false:", res); // Debug: Log why else branch hit
         toast.error("Login Unsuccessful");
-        setButtonLoader(false);
-      });
+      }
+    } catch (error) {
+      console.error("Login error:", error); // Debug: Log full error
+      toast.error("Login Unsuccessful");
+    } finally {
+      setButtonLoader(false); // Always reset loader
+    }
   };
 
   const formik = useFormik({

@@ -76,19 +76,23 @@ function BlogTable() {
 
   useEffect(() => {
     setLoader(true);
-    getBlogList({ limit: pageLimit, page: presentPage, skip: 0 }).then(
-      (res) => {
-        console.log(res);
-
+    getBlogList({ limit: pageLimit, page: presentPage, skip: 0 })
+      .then((res) => {
+        console.log(res, "initial-res"); // Better log name
         setLoader(false);
-        setBlogData(res?.detail?.data);
-        setTotalRecords(res?.detail.total_count);
-        setLastDataId(res?.data?.lastDataId);
-        setFirstDataId(res?.data?.firstDataId);
-        setTotalPages(res?.data?.total_page);
-        setNoRecords(res?.data?.noRecords);
-      }
-    );
+        // Standardize: Use data.records if exists, fallback to detail.data
+        const records = res?.data?.records || res?.detail?.data || [];
+        setBlogData(Array.isArray(records) ? records : []); // Guard: Ensure array
+        setTotalRecords(res?.detail?.total_count);
+        setTotalPages(res?.data?.total_pages);
+        setNoRecords(res?.data?.no_records);
+      })
+      .catch((err) => {
+        console.error("API Error:", err); // Add catch
+        setLoader(false);
+        toast.error("Failed to load blogs");
+        setBlogData([]); // Reset to empty
+      });
   }, []);
 
   const handleNextPage = () => {
@@ -170,9 +174,8 @@ function BlogTable() {
     });
   }, 500);
 
-  const data = BlogData?.map((items) => {
-    return items;
-  });
+  const data = Array.isArray(BlogData) ? BlogData.map((items) => items) : [];
+  console.log(data, "rendered-data"); // Log here too
 
   console.log(data, "00000");
 
@@ -463,14 +466,20 @@ function BlogTable() {
                   "Created At": ({ row }) => (
                     <td className="align-middle">
                       <span>
-                        {new Date(row?.created_at).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                        })}
+                        {row?.created_at
+                          ? new Date(row.created_at).toLocaleDateString(
+                              "en-US",
+                              {
+                                year: "numeric",
+                                month: "short",
+                                day: "numeric",
+                              }
+                            )
+                          : "N/A"}
                       </span>
                     </td>
                   ),
+
                   actions: ({ row }) => (
                     <td className="align-middle">
                       <span>

@@ -8,6 +8,7 @@ import React from "react";
 /** ****************************** Import Images ********************************* */
 // import DashboardIcon from "../assets/dashboard-icons/dashboard-icons.svg";
 import CMS from "../assets/dashboard-icons/cms.svg";
+import UsersIcon from "../assets/dashboard-icons/profile-2user.svg";
 
 /** ****************************** Import Filling Images ********************************* */
 
@@ -19,6 +20,7 @@ import CMSFill from "../assets/dashboard-icons/filling-icons/cms-fill.svg";
 
 const Blog = React.lazy(() => import("../pages/cms/blog"));
 const WhitePaper = React.lazy(() => import("../pages/cms/white-paper"));
+const adminUser = React.lazy(() => import("../pages/admin"));
 
 // ***************************** routes ******************************//
 const routes = [
@@ -47,13 +49,13 @@ const routes = [
     id: 1,
     element: Blog,
   },
-  
+
   // CMS
   {
     name: "White-papers",
     route: "/white-papers",
-    image: CMS,
-    fillImage: CMSFill,
+    image: CMSFill,
+    fillImage: CMS,
     icon: (
       <i className="fa-sharp fa-regular fa-circle-dollar-to-slot  icons-dynamic"></i>
     ),
@@ -61,34 +63,15 @@ const routes = [
     element: WhitePaper,
   },
 
-  // Users
-  // {
-  //   name: "Generic",
-  //   image: CMS,
-  //   fillImage: CMSFill,
-  //   icon: (
-  //     <i className="fa-sharp fa-regular fa-circle-dollar-to-slot  icons-dynamic"></i>
-  //   ),
-  //   id: 3,
-  //   iconClosed: (
-  //     <MdOutlineKeyboardArrowDown size={30} className="icons-dynamic" />
-  //   ),
-  //   iconOpened: (
-  //     <MdOutlineKeyboardArrowUp size={30} className="icons-dynamic" />
-  //   ),
-  //   subMenu: [
-  //     {
-  //       route: "/white-papers",
-  //       name: "White-papers",
-  //       element: WhitePaper,
-  //     },
-  //     {
-  //       route: "/blogs",
-  //       name: "Blogs",
-  //       element: Blog,
-  //     },
-  //   ],
-  // },
+  {
+    name: "adminUsers",
+    route: "/admin-users",
+    image: UsersIcon,
+    fillImage: UsersIcon, // You might want a different fill icon
+    icon: <i className="fa-sharp fa-solid fa-users icons-dynamic"></i>,
+    id: 3,
+    element: adminUser,
+  },
 ];
 
 export default routes;

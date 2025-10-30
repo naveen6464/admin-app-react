@@ -12,8 +12,12 @@ const deleteWhitePaperData = id => {
   return deleteDataApi(URL_CONSTANTS.whitepaper, id);
 }
 
+const deleteAdminUserData = id => {
+  return deleteDataApi(URL_CONSTANTS.admin, id);
+}
 
 export {
   deleteBlogData,
-  deleteWhitePaperData
+  deleteWhitePaperData,
+  deleteAdminUserData
 };

@@ -7,3 +7,7 @@ export const addBlogData = (params) => {
 export const addWhitepaperData = (params) => {
   return postDataApi(URL_CONSTANTS.whitepaper, params);
 };
+
+export const addAdminUserData = (params) => {
+  return postDataApi(URL_CONSTANTS.admin, params);
+};

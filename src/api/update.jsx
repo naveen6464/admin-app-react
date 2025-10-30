@@ -9,4 +9,8 @@ const updateWhitePaperData = (data, id) => {
   return putDataApi(URL_CONSTANTS.whitepaper, data, id);
 };
 
-export { updateBlogData, updateWhitePaperData };
+const updateAdminUserData = (data, id) => {
+  return putDataApi(URL_CONSTANTS.admin, data, id);
+};
+
+export { updateBlogData, updateWhitePaperData, updateAdminUserData };

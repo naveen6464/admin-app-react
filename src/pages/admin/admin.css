@@ -1,0 +1,209 @@
+.phone-icon {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 14px;
+}
+
+.table-height td {
+  height: 90px;
+  padding-top: 10px !important;
+}
+.btn-disable {
+  background-color: #84bcff;
+}
+
+.centering {
+  display: flex;
+  align-items: center;
+}
+
+.text-centers {
+  position: relative;
+  top: -3px;
+}
+
+.Quill-label {
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cms-info-box {
+  margin-top: 15px;
+  border-radius: 15px;
+}
+
+.cms-info-box .input-fields {
+  height: 45px !important;
+}
+.error-space-cms {
+  height: 15px;
+  margin-top: 4px;
+}
+
+.error-txt-cms {
+  font-size: 13px;
+  color: #e83147;
+}
+
+/* .error-input-cms{
+  border: 1px solid #e83147 !important;
+} */
+
+.error-icon-cms {
+  position: relative;
+  top: 3px;
+  margin-right: 3px;
+}
+
+.backIcon {
+  padding-right: 5px;
+  position: relative;
+  top: 2px;
+}
+
+.text-summary {
+  border: 1px solid #bcbcbc !important;
+}
+
+.text-summary:focus {
+  border: 2px solid #2285f9 !important;
+}
+
+.CancelBtnClass {
+  border: 1px solid #bcbcbc !important;
+  color: #606060 !important;
+  background-color: #fff !important;
+}
+
+.delete-btn {
+  border: 1px solid #e83147 !important;
+  color: #fff !important;
+  background-color: #e83147 !important;
+}
+
+.white-btn {
+  border: 1px solid #2285f9 !important;
+  color: #2258F9 !important;
+  background-color: #fff !important;
+}
+
+.user-profile-border {
+  border: 1px solid #c8c8c8;
+  border-radius: 15px;
+  /* padding: 40px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110px;
+  width: 110px;
+}
+
+.profile-image {
+  border-radius: 35px 35px 35px 35px;
+}
+.table-images {
+  border-radius: 50px 50px 50px 50px;
+}
+.butn-hide {
+  background-color: #6eaef9 !important;
+}
+.profile-label {
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.about-us-editor .ql-container.ql-snow {
+  height: 250px !important;
+}
+
+.disabled-field-text-area {
+  pointer-events: none;
+  background-color: #f5f5f5 !important;
+}
+
+.disabled-field-text-area .ql-editor {
+  cursor: not-allowed !important;
+}
+
+.disabled-input {
+  cursor: not-allowed !important;
+}
+
+.header-description-editor .ql-container.ql-snow {
+  height: 120px !important;
+}
+
+.custom-label {
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+  /* margin-bottom: 3px; */
+}
+
+.date-field {
+  width: 100% !important;
+  height: 40px !important;
+}
+
+.differ2 {
+  width: 20% !important ;
+}
+
+.differ1 {
+  width: 63% !important ;
+}
+
+/* tool-tip */
+.social-media .tool-tip {
+  position: absolute;
+  top: 15px !important;
+  z-index: 999 !important;
+  padding: 10px 12px;
+  border-radius: 8px;
+  right: 150px !important;
+  background-color: #090909;
+  color: white;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.terms-text{
+  font-size: 14px;
+  font-weight: 600;
+
+}
+
+.ActiveCms{
+  font-weight: 600;
+  font-size: 16px;
+  color: #2285f9;
+  border-bottom: 2px solid #2285f9;
+  cursor: pointer;
+}
+
+.InactiveCms{
+  font-weight: 600;
+  font-size: 16px;
+  color: #bcbcbc;
+  border-bottom: 2px solid #bcbcbc;
+  cursor: pointer;
+}
+
+.InactiveCms:hover {
+  color: #2285f9;
+  border-bottom: 2px solid #2285f9;
+}
+
+.cms-label {
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.points-top {
+  margin-top: 5px !important;
+}

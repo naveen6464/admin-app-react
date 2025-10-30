@@ -50,23 +50,26 @@ const getListByApi = (requestUrl, params) => {
     getParams ? "?" + getParams.slice(1) : ""
   }`;
 
-  console.log(finalUrl, "Final GET URL");
+  console.log(finalUrl, "   ");
 
   if (token) {
-    return fetch(finalUrl, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        Accept: "application/json",
-        Authorization: "Bearer " + token,
-      },
-    })
-      .then((response) => responseHandler(response))
-      .then((result) => result.json())
-      .catch((error) => {
-        errorHandler(error);
-      });
-  }
+  return fetch(finalUrl, {
+    method: "GET",
+    mode: "cors",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+  })
+    .then((response) => responseHandler(response))
+    .then((result) => result.json())
+    .catch((error) => {
+      console.log(error, "453");
+
+      errorHandler(error);
+    });
+};
 };
 
 const viewDataByApi = (requestUrl, dataId, isEvent, params) => {
@@ -123,7 +126,7 @@ const postDataApi = (requestUrl, params) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      // Authorization: "Bearer " + token,
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify(params),
   })
